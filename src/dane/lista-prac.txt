@@ -1,0 +1,6 @@
+Praca zespolu numer 1  1
+1 4 
+Praca zespolu drugiego  2
+2 
+Praca zespolu trzeciego  3
+3 6 
