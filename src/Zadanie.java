@@ -1,9 +1,7 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Zadanie extends Thread{
     public enum Stan {
@@ -30,7 +28,6 @@ public class Zadanie extends Thread{
         this.id = ++counter;
         Praca.dodajZadanie(id, this);
         listaZadan.add(this);
-        wpisDoBD();
     }
 
     public long getId(){
@@ -47,7 +44,6 @@ public class Zadanie extends Thread{
         this.id = ++counter;
         Praca.dodajZadanie(id, this);
         listaZadan.add(this);
-        wpisDoBD();
     }
 
     private int losowyCzasWykonania(){
@@ -209,6 +205,25 @@ public class Zadanie extends Thread{
                 out.println(result);
             }
             out.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static void odczyt(){
+        Zadanie.listaZadan = new ArrayList<>();
+        Zadanie.counter = 0;
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("src/dane/lista-zadan.txt"));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if(line.split(" ").length > 7){
+                    String tempOpis = "";
+                    for (int i = 1 ; i < line.split(" ").length - 5 ; i ++)
+                        tempOpis += line.split(" ")[i];
+                    Zadanie.listaZadan.add(new Zadanie(line.split(" ")[0], tempOpis, line.split(" ")[]))
+                }
+            }
+            reader.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

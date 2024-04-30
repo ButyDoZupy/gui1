@@ -10,7 +10,6 @@ public class Manager extends Recepcjonista implements IDobryPracownik{
     public Manager(String imie, String nazwisko, Date dataUrodzenia, DzialPracownikow dzialPracownikow, String login, String haslo, ArrayList<Zespol> listaZespolow) {
         super(imie, nazwisko, dataUrodzenia, dzialPracownikow, login, haslo);
         this.listaZespolow = listaZespolow;
-        wpisDoBD();
     }
 
     public void dodajZespol (Zespol zespol){

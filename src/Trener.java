@@ -9,7 +9,6 @@ public class Trener extends Pracownik implements IDobryPracownik{
     public Trener(String imie, String nazwisko, Date dataUrodzenia, DzialPracownikow dzialPracownikow, String specjalizacja) {
         super(imie, nazwisko, dataUrodzenia, dzialPracownikow);
         this.specjalizacja = specjalizacja;
-        wpisDoBD();
     }
 
     public String getSpecjalizacja(){

@@ -1,6 +1,6 @@
 Zumba Trening zumby dla grupy Utworzone 2024 APRIL 30 1 false
 Crossfit Trening crossfit dla grupy Utworzone 2024 APRIL 30 2 true
 Rozgrzewka Rozgrzewka przed treningiem - absolutnie niezbedna! Utworzone 2024 APRIL 30 3 true
-Rejestracja klientow  Utworzone 2024 APRIL 30 1 false
-Trening indywidualny  Utworzone 2024 APRIL 30 true
-Liczenie zyskow  Utworzone 2024 APRIL 30 3 true
+Rejestracja-klientow  Utworzone 2024 APRIL 30 1 false
+Trening-indywidualny  Utworzone 2024 APRIL 30 true
+Liczenie-zyskow  Utworzone 2024 APRIL 30 3 true

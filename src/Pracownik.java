@@ -1,4 +1,7 @@
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -20,7 +23,6 @@ public abstract class Pracownik implements Comparable<Pracownik>{
         dzialPracownikow.dodajPracownik(this);
         this.id = ++counter;
         listaPracownikow.add(this);
-        wpisDoBD();
     }
 
     public static ArrayList<Pracownik> getListaPracownikow(){
@@ -125,17 +127,20 @@ public abstract class Pracownik implements Comparable<Pracownik>{
 
     public static void odczytListy(){
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("src/dane/dane-pracownikow.txt"));
-            String file = reader.;
-            while ((line = reader.readLine())!= null) {
-                    if (line.split(" ")[0].equals("T")) {
+            Path path = Paths.get("src/dane/dane-pracownikow.txt");
+            String file = String.valueOf(Files.readAllLines(path));
+            file = file.replace("[", "");
+            file = file.replace("]", "");
+
+            System.out.println(file);
+            for (String line:
+                 file.split(", ")) {
+                if (line.split(" ")[0].equals("T")) {
                         Trener temp = new Trener(
                                 line.split(" ")[1], line.split(" ")[2],
                                 new Date(Integer.parseInt(line.split(" ")[3]), Integer.parseInt(line.split(" ")[4]), Integer.parseInt(line.split(" ")[5])),
                                 DzialPracownikow.getListaDzialow().get(Integer.parseInt(line.split(" ")[6])-1), line.split(" ")[7]
                         );
-                        System.out.println("T");
-                        line = reader.readLine();
 //                    for (String i:
 //                         line.split(" ")) {
 //                        temp.dodajZadanie(listaZadan.get(Integer.valueOf(i)));
@@ -146,25 +151,20 @@ public abstract class Pracownik implements Comparable<Pracownik>{
                                 line.split(" ")[1], line.split(" ")[2],
                                 new Date(Integer.parseInt(line.split(" ")[3]), Integer.parseInt(line.split(" ")[4]), Integer.parseInt(line.split(" ")[5])),
                                 DzialPracownikow.getListaDzialow().get(Integer.parseInt(line.split(" ")[6])-1), line.split(" ")[7], line.split(" ")[8], new ArrayList<Zespol>());
-                        line = reader.readLine();
-                        System.out.println("M");
 //                    for (String i:
 //                            line.split(" ")) {
 //                        temp.dodajZadanie(listaZadan.get(Integer.valueOf(i)));
 //                    }
-                        line = reader.readLine();
 //                    for (String i:
 //                            line.split(" ")) {
 //                        temp.dodajZespol(listaZespolow.get(Integer.valueOf(i)));
 //                    }
                         listaPracownikow.add(temp);
-                    } else {
+                    } else if (line.split(" ")[0].equals("R")){
                         Recepcjonista temp = new Recepcjonista(
                                 line.split(" ")[1], line.split(" ")[2],
                                 new Date(Integer.parseInt(line.split(" ")[3]), Integer.parseInt(line.split(" ")[4]), Integer.parseInt(line.split(" ")[5])),
                                 DzialPracownikow.getListaDzialow().get(Integer.parseInt(line.split(" ")[6])-1), line.split(" ")[6], line.split(" ")[7]);
-                        line = reader.readLine();
-                        System.out.println("R");
 //                    for (String i:
 //                            line.split(" ")) {
 //                        temp.dodajZadanie(listaZadan.get(Integer.valueOf(i)));
@@ -172,7 +172,7 @@ public abstract class Pracownik implements Comparable<Pracownik>{
                         listaPracownikow.add(temp);
                     }
                 }
-            } catch (IOException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }

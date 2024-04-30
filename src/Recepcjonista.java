@@ -11,7 +11,6 @@ public class Recepcjonista extends Pracownik implements IDobryPracownik{
         this.login = login;
         this.haslo = haslo;
         this.initial = generateInitial(this.getImie(), this.getNazwisko());
-        wpisDoBD();
     }
     public String getLogin(){
         return login;

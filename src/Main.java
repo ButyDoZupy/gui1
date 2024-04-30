@@ -12,8 +12,8 @@ public class Main {
              DzialPracownikow.getListaDzialow()) {
             System.out.println(dzial.getId());
         }
-//        Pracownik.odczytListy();
-//        System.out.println(Pracownik.getListaPracownikow());
+        Pracownik.odczytListy();
+        System.out.println(Pracownik.getListaPracownikow());
 
 
 //        DzialPracownikow zmianaPoranna = DzialPracownikow.createDzial("Poranna");
